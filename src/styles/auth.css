@@ -1,0 +1,123 @@
+/* Login.css — também usado por Cadastro, EsqueciSenha e ResetSenha */
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 10px;
+}
+
+.auth-input {
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #ccc;
+  font-size: var(--font-size-md);
+}
+
+.auth-button {
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: var(--font-size-base);
+}
+
+.auth-button--primary {
+  background: var(--color-primary);
+}
+
+.auth-button--success {
+  background: var(--color-success);
+}
+
+.auth-links {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.auth-link {
+  color: var(--color-primary);
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.auth-msg--error {
+  color: red;
+  margin: 0;
+}
+
+.auth-msg--success {
+  color: green;
+  margin: 0;
+}
+
+/* AtivarConta */
+.ativar-card {
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  width: 320px;
+  box-shadow: var(--shadow-float);
+}
+
+.ativar-card--loading {
+  background: var(--color-white);
+  border: 1px solid #ccc;
+}
+
+.ativar-card--success {
+  background: var(--color-success-light);
+  border: 1px solid var(--color-success-border);
+}
+
+.ativar-card--error {
+  background: var(--color-danger-light);
+  border: 1px solid #ef5350;
+}
+
+.ativar-card__hint {
+  font-size: 12px;
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
+.ativar-button {
+  margin-top: 1rem;
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.ativar-button:hover {
+  background: #15803d;
+  transform: scale(1.03);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .auth-form {
+    width: 90vw;
+  }
+
+  .ativar-card {
+    width: 90vw;
+  }
+}

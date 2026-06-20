@@ -1,0 +1,114 @@
+/* home.css */
+
+:root {
+  --primary: #2563eb;
+  --secondary: #059669;
+  --dark: #1e293b;
+  --light: #f8fafc;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 60%, #42a5f5 100%);
+}
+
+.home-left, .home-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.home-left {
+  position: relative; 
+  text-align: center;
+  padding: 4rem;
+  overflow: hidden;
+}
+
+.title-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+
+.bg-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px; 
+  opacity: 0.1; 
+  pointer-events: none;
+  z-index: 0; 
+}
+
+.home-left h1 {
+  position: relative;
+  z-index: 1; 
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--light);
+  margin-bottom: 1rem;
+}
+
+.home-right {
+  gap: 1.5rem;
+  background: white;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+}
+
+.home-btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+  border: 2px solid transparent;
+}
+
+.home-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--dark);
+  border-color: var(--dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--dark);
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .home-container {
+    flex-direction: row;
+  }
+}

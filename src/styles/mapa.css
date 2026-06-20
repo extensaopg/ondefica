@@ -1,0 +1,81 @@
+/* mapa.css */
+
+.map-wrapper {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.map-user-box {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-sm);
+}
+
+.map-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-circle);
+  background: #333;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.map-menu {
+  background: var(--color-white);
+  padding: 10px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  box-shadow: var(--shadow-menu);
+}
+
+.map-menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  text-align: left;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+}
+
+.map-menu button:hover {
+  background: var(--color-bg);
+}
+
+.map-btn-login {
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+
+.map-btn-help {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-circle);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

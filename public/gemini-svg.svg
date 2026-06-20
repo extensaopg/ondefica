@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="purpleOuter" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B21A8" />
+      <stop offset="100%" stop-color="#4C1D95" />
+    </linearGradient>
+
+    <linearGradient id="purpleInner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0, 0)">
+    
+    <path d="M100,20 C55.8,20 20,55.8 20,100 C20,145 100,185 100,185 C100,185 180,145 180,100 C180,55.8 144.2,20 100,20 Z" 
+          fill="url(#purpleOuter)" />
+    
+    <circle cx="100" cy="95" r="60" fill="#FFFFFF" />
+    
+    <path d="M100,50 C75.1,50 55,70.1 55,95 C55,107.2 59.9,118.3 67.8,126.3 L55,142 L73.2,136.5 C81.1,141.2 90.2,140 100,140 C124.9,140 145,119.9 145,95 C145,70.1 124.9,50 100,50 Z" 
+          fill="url(#purpleInner)" />
+    
+    <polygon points="100,73 107.6,88.5 124.8,91 112.4,103.1 115.3,120.3 100,112.2 84.7,120.3 87.6,103.1 75.2,91 92.4,88.5" 
+             fill="#FFFFFF" />
+             
+  </g>
+</svg>

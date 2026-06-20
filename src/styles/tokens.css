@@ -1,0 +1,65 @@
+/* =========================================
+   TOKENS DE DESIGN — Mapa de Eventos
+   Importar em index.css ou nos CSS de página
+   ========================================= */
+
+:root {
+  /* Cores primárias */
+  --color-primary: #1976d2;
+  --color-primary-light: #f0f7ff;
+  --color-primary-shadow: rgba(25, 118, 210, 0.3);
+
+  /* Cores de feedback */
+  --color-success: #2e7d32;
+  --color-success-light: #e8f5e9;
+  --color-success-border: #66bb6a;
+  --color-danger: #dc3545;
+  --color-danger-light: #fff0f0;
+  --color-danger-dark: #d32f2f;
+  --color-warning: #f59e0b;
+  --color-warning-shadow: rgba(245, 158, 11, 0.3);
+
+  /* Neutros */
+  --color-bg: #f4f6f8;
+  --color-white: #ffffff;
+  --color-border: #eaeaea;
+  --color-border-input: #d1d5db;
+  --color-text: #1a1a1a;
+  --color-text-muted: #666;
+  --color-text-light: #888;
+  --color-input-bg: #fafafa;
+
+  /* Tipografia */
+  --font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+
+  /* Espaçamento */
+  --space-xs: 5px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+  --space-4xl: 40px;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 50px;
+  --radius-circle: 50%;
+
+  /* Shadows */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.03);
+  --shadow-menu: 0 2px 10px rgba(0, 0, 0, 0.2);
+  --shadow-float: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-dropdown: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
