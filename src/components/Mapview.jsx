@@ -12,6 +12,8 @@ import TracarRotaApe from './TracarRotaApe';
 import StandModal from './StandModal';
 import SearchEventMap from './searchEventMap';
 
+import '../styles/mapa.css'
+
 // fix icon
 delete L.Icon.Default.prototype._getIconUrl
 
@@ -149,23 +151,20 @@ function MapView() {
 
     if (!position) {
         return (
-            <div style={{
-                height: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "12px",
-                background: "#f5f5f5"
-            }}>
-                <div className="loader"></div>
-                <p style={{ fontSize: "16px", color: "#555" }}>
-                    Para exibir o mapa corretamente, ative a permissão de localização no seu navegador.
-                </p>
+            <div className="gps-screen">
+                <div className="gps-card">
+                    <div className="loader"></div>
 
-                <p style={{ fontSize: "16px", color: "#555" }}>
-                    Obtendo sua localização...
-                </p>
+                    <h2>Encontrando sua localização</h2>
+
+                    <p>
+                        Para exibir o mapa corretamente, precisamos acessar sua localização.
+                    </p>
+
+                    <span className="gps-subtext">
+                    Aguarde enquanto buscamos sua posição...
+                </span>
+                </div>
             </div>
         );
     }
