@@ -36,10 +36,9 @@ function Mapa() {
   }, [])
 
   function logout() {
-    usuariosService.logout().then(() => {
-      setUser(null)
-      navigate('/login')
-    })
+    localStorage.removeItem('token')
+    setUser(null)
+    navigate('/mapa')
   }
 
   return (
