@@ -1,55 +1,118 @@
 import { useEffect, useRef, useState } from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { usuariosService } from '../services/usuariosService'
 import '../styles/auth.css'
 
 function AtivarConta() {
   const [params] = useSearchParams()
-  const navigate = useNavigate()
-  const [status, setStatus] = useState('Ativando sua conta...')
+  const token = params.get('token')
+
+  const [status, setStatus] = useState('')
   const [type, setType] = useState('loading')
-  const called = useRef(false)
+  const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    if (called.current) return
-    called.current = true
+  async function executar(acao) {
+    try {
+      setLoading(true)
 
-    const token = params.get('token')
+      const res = await usuariosService.ativarConta(token, acao)
+      const data = await res.json()
 
-    async function ativar() {
-      try {
-        const res = await usuariosService.ativarConta(token)
-        const data = await res.json()
-
-        if (!res.ok) {
-          setStatus(data.message || 'Erro ao ativar conta')
-          setType('error')
-          return
-        }
-
-        setStatus('Conta ativada com sucesso! 🎉')
-        setType('success')
-        setTimeout(() => navigate('/login'), 2500)
-      } catch {
-        setStatus('Erro ao conectar com servidor')
+      if (!res.ok) {
+        setStatus(data.message || 'Erro ao processar ação')
         setType('error')
+        setLoading(false)
+        return
       }
-    }
 
-    ativar()
-  }, [])
+      setStatus(data.message)
+      if (acao === 'rejeitar') {
+        setType('rejected')
+      } else {
+        setType('approved')
+      }      setLoading(false)
+
+    } catch {
+      setStatus('Erro ao conectar com servidor')
+      setType('error')
+      setLoading(false)
+    }
+  }
+
+  if (!token) {
+    return (
+        <div className="auth-container">
+          <div className="ativar-card ativar-card--error">
+            <h2>Link inválido</h2>
+          </div>
+        </div>
+    )
+  }
 
   return (
-    <div className="auth-container">
-      <div className={`ativar-card ativar-card--${type}`}>
-        <h2>Ativação de Conta</h2>
-        <p>{status}</p>
+      <div className="auth-container">
+        <div className={`ativar-card ativar-card--${type}`}>
 
-        {type === 'loading' && <p className="ativar-card__hint">Aguarde...</p>}
-        {type === 'success' && <p className="ativar-card__hint">Redirecionando para login...</p>}
-        {type === 'error' && <p className="ativar-card__hint">Verifique o link do email</p>}
+          <h2>Ação do Administrador</h2>
+
+          {status && <p style={{ marginTop: 10 }}>{status}</p>}
+
+          {type !== 'success' && (
+              <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px',
+                    marginTop: '25px',
+                    alignItems: 'center'
+                  }}
+              >
+                <button
+                    disabled={loading}
+                    onClick={() => executar('aprovar')}
+                    style={{
+                      width: '100%',
+                      maxWidth: '220px',
+                      background: '#2e7d32',
+                      color: '#fff',
+                      padding: '12px',
+                      border: 'none',
+                      borderRadius: '8px',
+                      fontWeight: 'bold',
+                      cursor: 'pointer'
+                    }}
+                >
+                  Aprovar
+                </button>
+
+                <button
+                    disabled={loading}
+                    onClick={() => executar('rejeitar')}
+                    style={{
+                      width: '100%',
+                      maxWidth: '220px',
+                      background: '#d32f2f',
+                      color: '#fff',
+                      padding: '12px',
+                      border: 'none',
+                      borderRadius: '8px',
+                      fontWeight: 'bold',
+                      cursor: 'pointer'
+                    }}
+                >
+                  Rejeitar
+                </button>
+              </div>
+          )}
+
+          {loading && (
+              <p className="ativar-card__hint" style={{ marginTop: 15 }}>
+                Processando...
+              </p>
+          )}
+
+        </div>
       </div>
-    </div>
   )
 }
 

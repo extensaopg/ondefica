@@ -29,7 +29,7 @@ export const usuariosService = {
       body: JSON.stringify({ senha }),
     }),
 
-  ativarConta: (token) => apiFetch(`/usuarios/ativar/${token}`),
+  ativarConta: (token, acao) => apiFetch(`/usuarios/ativar/${token}?acao=${acao}`),
 
   validarTokenReset: (token)  => apiFetch(   `/usuarios/reset/${token}/validar`),
 

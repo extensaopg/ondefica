@@ -25,7 +25,7 @@ function Cadastro() {
         return
       }
 
-      setSuccess('Cadastro realizado! Verifique seu email para ativar a conta.')
+      setSuccess('Cadastro realizado! Enviado para aprovação do administrador')
       
     } catch {
       setError('Erro ao conectar com servidor')

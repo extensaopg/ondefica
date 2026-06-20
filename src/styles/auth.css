@@ -121,3 +121,23 @@
     width: 90vw;
   }
 }
+
+.ativar-card--approved {
+  border-left: 6px solid #2e7d32;
+  background: #f3faf4;
+}
+
+.ativar-card--rejected {
+  border-left: 6px solid #ff9800;
+  background: #fff4e5;
+}
+
+.ativar-card--error {
+  border-left: 6px solid #d32f2f;
+  background: #fdecea;
+}
+
+.ativar-card--loading {
+  border-left: 6px solid #1976d2;
+  background: #f4f6f8;
+}

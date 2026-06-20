@@ -58,6 +58,11 @@ function Login() {
         <button type="submit" className="auth-button auth-button--primary">
           Entrar
         </button>
+        <div className="auth-links">
+          <p className="auth-link" onClick={() => navigate('/esqueci-senha')}>
+            Esqueci minha senha
+          </p>
+        </div>
       </form>
     </div>
   )
