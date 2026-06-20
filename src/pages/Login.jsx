@@ -21,7 +21,7 @@ function Login() {
         setError(data.message)
         return
       }
-
+      localStorage.setItem('token', data.token)
       navigate('/mapa')
     } catch {
       setError('Erro ao conectar com servidor')
