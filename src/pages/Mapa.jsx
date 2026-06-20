@@ -35,11 +35,6 @@ function Mapa() {
     }
   }, [])
 
-  function logout() {
-    localStorage.removeItem('token')
-    setUser(null)
-    navigate('/mapa')
-  }
 
   return (
     <div className="map-wrapper">
@@ -60,7 +55,6 @@ function Mapa() {
                 }}>
                     Meus eventos
                 </button>
-                <button onClick={logout}>Sair</button>
               </div>
             )}
           </>

@@ -15,11 +15,9 @@ function Navbar() {
   }, [])
 
   function logout() {
-    usuariosService.logout().then(() => {
-      setUser(null)
-      localStorage.removeItem('token')
-      navigate('/login')
-    })
+    localStorage.removeItem('token')
+    setUser(null)
+    navigate('/mapa')
   }
 
   return (
