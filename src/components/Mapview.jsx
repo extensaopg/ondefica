@@ -72,8 +72,6 @@ function FocoDinamico({ coordenadas }) {
 
 function MapView() {
     const [position, setPosition] = useState(null)
-    const [erroGps, setErroGps] = useState(false);
-    const [tentouGps, setTentouGps] = useState(false);
     const [eventos, setEventos] = useState([])
     const [stands, setStands] = useState([])
     const [eventoAtivoId, setEventoAtivoId] = useState(null)
@@ -110,35 +108,24 @@ function MapView() {
     }, []);
 
     useEffect(() => {
-        if (!navigator.geolocation) {
-            setErroGps(true);
-            return;
-        }
-
-        setTentouGps(true);
-
         const watchId = navigator.geolocation.watchPosition(
             (pos) => {
                 setPosition([
                     pos.coords.latitude,
                     pos.coords.longitude,
                 ]);
-
-                setErroGps(false); // sucesso
             },
-            (err) => {
-                console.error("Erro GPS:", err);
-
-                setErroGps(true);
-            },
+            (err) => console.error("Erro de GPS:", err),
             {
                 enableHighAccuracy: true,
                 maximumAge: 0,
-                timeout: 8000
+                timeout: 5000
             }
         );
 
-        return () => navigator.geolocation.clearWatch(watchId);
+        return () => {
+            navigator.geolocation.clearWatch(watchId);
+        };
     }, []);
 
     useEffect(() => {
@@ -172,7 +159,11 @@ function MapView() {
                 background: "#f5f5f5"
             }}>
                 <div className="loader"></div>
-                <p style={{ fontSize: "16px", color: "#555" }}>
+                <p style={{ fontSize: "18px", color: "#555" }}>
+                    Para exibir o mapa corretamente, ative a permissão de localização no seu navegador.
+                </p>
+
+                <p style={{ fontSize: "18px", color: "#555" }}>
                     Obtendo sua localização...
                 </p>
             </div>
@@ -607,13 +598,6 @@ function MapView() {
                         </Marker>)}
                 )}
             </MapContainer>
-            {erroGps && tentouGps && (
-                <div style={{ position: "absolute", bottom: 20, left: 20, right: 20 }}>
-                    <button onClick={() => window.location.reload()}>
-                        📍 Não foi possível obter sua localização. Toque para ativar
-                    </button>
-                </div>
-            )}
         </div>
 
     )
