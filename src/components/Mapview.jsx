@@ -72,6 +72,8 @@ function FocoDinamico({ coordenadas }) {
 
 function MapView() {
     const [position, setPosition] = useState(null)
+    const [erroGps, setErroGps] = useState(false);
+    const [tentouGps, setTentouGps] = useState(false);
     const [eventos, setEventos] = useState([])
     const [stands, setStands] = useState([])
     const [eventoAtivoId, setEventoAtivoId] = useState(null)
@@ -108,24 +110,35 @@ function MapView() {
     }, []);
 
     useEffect(() => {
+        if (!navigator.geolocation) {
+            setErroGps(true);
+            return;
+        }
+
+        setTentouGps(true);
+
         const watchId = navigator.geolocation.watchPosition(
             (pos) => {
                 setPosition([
                     pos.coords.latitude,
                     pos.coords.longitude,
                 ]);
+
+                setErroGps(false); // sucesso
             },
-            (err) => console.error("Erro de GPS:", err),
+            (err) => {
+                console.error("Erro GPS:", err);
+
+                setErroGps(true);
+            },
             {
                 enableHighAccuracy: true,
                 maximumAge: 0,
-                timeout: 5000
+                timeout: 8000
             }
         );
 
-        return () => {
-            navigator.geolocation.clearWatch(watchId);
-        };
+        return () => navigator.geolocation.clearWatch(watchId);
     }, []);
 
     useEffect(() => {
@@ -147,7 +160,24 @@ function MapView() {
         evento.descricao?.toLowerCase().includes(termoBusca.toLowerCase())
     );
 
-    if (!position) return <p>Obtendo localização...</p>
+    if (!position) {
+        return (
+            <div style={{
+                height: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "12px",
+                background: "#f5f5f5"
+            }}>
+                <div className="loader"></div>
+                <p style={{ fontSize: "16px", color: "#555" }}>
+                    Obtendo sua localização...
+                </p>
+            </div>
+        );
+    }
 
     const estilosLista = {
         fabBtnStands: {
@@ -327,7 +357,7 @@ function MapView() {
     }
 
     return (
-    
+
 
         <div style={{ position: 'relative', height: '100vh', width: '100%' }}>
 
@@ -577,7 +607,15 @@ function MapView() {
                         </Marker>)}
                 )}
             </MapContainer>
+            {erroGps && tentouGps && (
+                <div style={{ position: "absolute", bottom: 20, left: 20, right: 20 }}>
+                    <button onClick={() => window.location.reload()}>
+                        📍 Não foi possível obter sua localização. Toque para ativar
+                    </button>
+                </div>
+            )}
         </div>
+
     )
 }
 
