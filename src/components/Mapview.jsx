@@ -159,11 +159,11 @@ function MapView() {
                 background: "#f5f5f5"
             }}>
                 <div className="loader"></div>
-                <p style={{ fontSize: "18px", color: "#555" }}>
+                <p style={{ fontSize: "16px", color: "#555" }}>
                     Para exibir o mapa corretamente, ative a permissão de localização no seu navegador.
                 </p>
 
-                <p style={{ fontSize: "18px", color: "#555" }}>
+                <p style={{ fontSize: "16px", color: "#555" }}>
                     Obtendo sua localização...
                 </p>
             </div>
