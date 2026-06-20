@@ -34,16 +34,6 @@ function Home() {
           Fazer Login
         </button>
 
-        <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-          <p style={{ fontSize: '1.0rem', marginBottom: '10px'}}>Não tem conta?</p>
-          <button 
-            className="home-btn btn-primary" 
-            onClick={() => navigate('/cadastro')}
-          >
-            Criar conta gratuita
-          </button>
-        </div>
-
         <button 
           className="home-btn" 
           style={{ background: 'none', border: 'none', textDecoration: 'underline', color: '#64748b' }}

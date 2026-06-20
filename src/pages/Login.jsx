@@ -59,15 +59,6 @@ function Login() {
           Entrar
         </button>
       </form>
-
-      <div className="auth-links">
-        <p className="auth-link" onClick={() => navigate('/esqueci-senha')}>
-          Esqueci minha senha
-        </p>
-        <p className="auth-link" onClick={() => navigate('/cadastro')}>
-          Criar conta
-        </p>
-      </div>
     </div>
   )
 }

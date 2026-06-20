@@ -14,6 +14,8 @@ import EditarEvento from './pages/EditarEvento'
 import GerenciarStands from './pages/GerenciarStands'
 import FAQ from './pages/FAQ'
 
+const cadastroPath = import.meta.env.VITE_CADASTRO_PATH
+
 function App() {
     return (
         <BrowserRouter>
@@ -27,7 +29,7 @@ function App() {
 
                 <Route path="/login" element={<Login />} />
 
-                <Route path="/cadastro" element={<Cadastro />} />
+                <Route path={cadastroPath} element={<Cadastro />} />
 
                 <Route path="/esqueci-senha" element={<EsqueciSenha />} />
 

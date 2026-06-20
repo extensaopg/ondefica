@@ -153,13 +153,12 @@ export default function FAQ() {
             auth={false}
             desc="Cadastre-se para poder criar e gerenciar seus próprios eventos e stands no mapa."
             steps={[
-              'Clique no botão "Login" no canto superior direito do mapa.',
-              'Na tela de login, clique em "Criar conta".',
+              'Solicite ao administrador o link de criação de conta',
               'Preencha nome, e-mail e senha.',
               'Clique em "Criar conta".',
-              'Acesse seu e-mail e clique no link de ativação enviado.',
+              'Aguarde o administrador aprovar a sua conta',
             ]}
-            callout="📧 Você receberá um e-mail de confirmação. A conta só fica ativa após clicar no link."
+            callout="📧 O gerente receberá email de autorização. A conta só fica ativa após autorização."
             imageLabel="Captura de tela — tela de cadastro"
           />
 
