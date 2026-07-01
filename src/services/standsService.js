@@ -6,6 +6,9 @@ export const standsService = {
   listarPorEvento: (eventoId) => apiFetch(`/stands/?eventoId=${eventoId}`),
 
   buscarPorId: (id) => apiFetch(`/stands/${id}`),
+  
+  buscarPorNome: (nome, eventoId) => 
+    apiFetch(`/stands/buscar?q=${encodeURIComponent(nome)}&eventoId=${eventoId}`),
 
   criar: (dados) =>
     apiFetch('/stands', {
@@ -19,5 +22,6 @@ export const standsService = {
       body: dados,
     }),
 
+    
   deletar: (id) => apiFetch(`/stands/${id}`, { method: 'DELETE' }),
 }

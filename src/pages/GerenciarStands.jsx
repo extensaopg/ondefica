@@ -82,6 +82,25 @@ export default function GerenciarStands() {
   const handleSalvarStand = async (e) => {
     e.preventDefault();
 
+    if (!standEmEdicao) {
+        try {
+            const res = await standsService.buscarPorNome(nome, eventoId);
+            if (res.ok) {
+                const standsEncontrados = await res.json();
+                const duplicado = standsEncontrados.some(
+                    s => s.nome.toLowerCase() === nome.toLowerCase()
+                );
+
+                if (duplicado) {
+                    alert('Erro: Já existe um stand com este nome neste evento!');
+                    return; 
+                }
+            }
+        } catch (err) {
+            console.error("Erro ao verificar duplicidade:", err);
+        }
+    }
+
     const formData = new FormData();
 
     formData.append('nome', nome);
@@ -112,6 +131,7 @@ export default function GerenciarStands() {
         const resStand = await res.json();
         const standId = isEdicao ? standEmEdicao._id : resStand.id || resStand._id;
         
+
         const reqStandSalvo = await standsService.buscarPorId(standId);
         const standSalvo = await reqStandSalvo.json();
 
