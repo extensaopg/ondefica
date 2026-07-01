@@ -5,6 +5,7 @@ const styles = {
         position: 'absolute',
         top: '10px',
         left: '50px',
+        width: '200px',
         zIndex: 1000,
         display: 'flex',
         flexDirection: 'column',
@@ -13,6 +14,7 @@ const styles = {
         gap: '5px'
     },
     wrapper: {
+        width: '80%',
         display: 'flex',
         gap: '5px'
     },
@@ -58,10 +60,10 @@ const styles = {
         outline: 'none'
     },
     resultsContainer: {
+        width: '200px',
         background: 'white',
         borderRadius: '4px',
         boxShadow: '0 1px 5px rgba(0,0,0,0.65)',
-        width: '239px',
         maxHeight: '260px',
         overflowY: 'auto'
     },
@@ -150,30 +152,33 @@ export default function SearchEventMap({ eventos, onSelectEvento, buscaAberta, s
             onDoubleClick={(e) => e.stopPropagation()}
             onWheel={(e) => e.stopPropagation()}
         >
-            {/* Linha 1: lupa + input de busca */}
-            <div style={styles.wrapper}>
-            <button
-                onClick={() => {
-                    setBuscaAberta(!buscaAberta);
-                    if (painelEventosAberto) setPainelEventosAberto(false);
-                }}
-                style={styles.button}
-            >
-                <span>🔍</span>
-                <span>Buscar evento...</span>
-            </button>
 
-                {buscaAberta && (
-                    <input
-                        autoFocus
-                        type="text"
-                        placeholder="Buscar evento..."
-                        value={termoBusca}
-                        onChange={(e) => setTermoBusca(e.target.value)}
-                        style={styles.input}
-                    />
-                )}
-            </div>
+            <div style={{ ...styles.wrapper, height: '34px' }}>
+            {buscaAberta ? (
+                <input
+                    autoFocus
+                    type="text"
+                    placeholder="Buscar evento..."
+                    value={termoBusca}
+                    onChange={(e) => setTermoBusca(e.target.value)}
+                    onBlur={() => {
+                        if (!termoBusca) setBuscaAberta(false);
+                    }}
+                    style={styles.input}
+                />
+            ) : (
+                <button
+                    onClick={() => {
+                        setBuscaAberta(true);
+                        setPainelEventosAberto(false);
+                    }}
+                    style={styles.button}
+                >
+                    <span>🔍</span>
+                    <span>Buscar evento...</span>
+                </button>
+            )}
+        </div>
 
             {/* Dropdown da busca por texto */}
             {buscaAberta && termoBusca && (
