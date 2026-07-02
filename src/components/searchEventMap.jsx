@@ -79,7 +79,10 @@ const styles = {
     },
     painelList: {
         overflowY: 'auto',
-        flex: 1
+        flex: 1,
+        WebkitOverflowScrolling: 'touch',
+        overscrollBehavior: 'contain',
+        touchAction: 'pan-y',
     },
     header: {
         display: 'flex',
@@ -182,7 +185,11 @@ export default function SearchEventMap({ eventos, onSelectEvento, buscaAberta, s
 
             {/* Dropdown da busca por texto */}
             {buscaAberta && termoBusca && (
-                <div style={styles.resultsContainer}>
+                <div style={styles.resultsContainer}
+                    onTouchStart={(e) => e.stopPropagation()}
+                    onTouchMove={(e) => e.stopPropagation()}
+                    onTouchEnd={(e) => e.stopPropagation()}
+                >
                     {eventosFiltradosBusca.length > 0 ? (
                         eventosFiltradosBusca.map((evento) => {
                             const idEvento = evento.id || evento._id;
@@ -221,8 +228,13 @@ export default function SearchEventMap({ eventos, onSelectEvento, buscaAberta, s
 
             {/* Painel de listagem de eventos */}
             {painelEventosAberto && !buscaAberta && (
-                <div style={styles.painelContainer}>
-                    <div style={styles.header}>
+                <div style={styles.painelContainer}
+                    onTouchStart={(e) => e.stopPropagation()}
+                    onTouchMove={(e) => e.stopPropagation()}
+                    onTouchEnd={(e) => e.stopPropagation()}
+                >
+                    <div style={styles.header}
+                    onTouchStart={(e) => e.stopPropagation()}>
                         <span style={styles.headerText}>
                             {eventos.length} evento{eventos.length !== 1 ? 's' : ''}
                         </span>
